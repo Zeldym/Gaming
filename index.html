@@ -3,24 +3,34 @@
 <head><!DOCTYPE html>
   <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Protected Website</title>
-      <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-      <div id="passwordPrompt">
-          <h2>googlegogglesandtheapplevisionproohiorizzandgyattbro</h2>
-          <input type="password" id="password" placeholder="Enter Password">
-          <button onclick="checkPassword()">Submit</button>
-      </div>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Protected Website</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Password Prompt (Visible only until correct password is entered) -->
+        <div id="passwordPrompt" class="passwordPrompt">
+            <h2>gigaroid@eminembrunomars</h2>
+            <input type="password" id="password" placeholder="Enter Password">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+    
+        <!-- Hidden content that will only be displayed after correct password -->
+        <div id="content" style="display:none;">
+            <h1>Welcome to my website!</h1>
+            <p>This is the protected content.</p>
+        </div>
+    
+        <script src="script.js"></script>
+    </body>
+    </html>
+    
   
-      <div id="content" style="display:none;">
-          <h1>Welcome to my website!</h1>
-          <p>This is the protected content.</p>
-      </div>
-  
-      <script src="script.js"></script>
+
   </body>
   </html>
   
