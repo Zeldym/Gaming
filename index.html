@@ -134,6 +134,24 @@
       cursor: pointer;
       z-index: 10000;
     }
+
+    /* Hall of Fame Section */
+    #hallOfFame {
+      padding: 20px;
+      text-align: center;
+      color: #FFF;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: none;
+    }
+
+    #hallOfFame h2 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    #hallOfFame p {
+      font-size: 18px;
+    }
   </style>
 </head>
 <body>
@@ -156,6 +174,14 @@
   <div class="top-menu">
     <a href="javascript:void(0);" onclick="showHallOfFame()">Hall of Fame</a>
     <a href="javascript:void(0);" onclick="showGames()">Games</a>
+  </div>
+
+  <!-- Hall of Fame Section -->
+  <div id="hallOfFame">
+    <h2>Hall of Fame</h2>
+    <p>Made by Zeldym, scoredivy717983, Aristo4545</p>
+    <p>Thanks to Mally and Krishydafishy for letting me embed their websites.</p>
+    <button onclick="goBack()">Back to Games</button>
   </div>
 
   <!-- Clean Intro Page Section -->
@@ -205,6 +231,7 @@
   <script>
     // Password for access
     const correctPassword = "wheredidblockergosuty@ohiogyattrizzohiogigariodgyatt"; // Replace with your desired password
+    let loggedIn = false;
 
     // Function to check the password
     function checkPassword() {
@@ -212,7 +239,7 @@
       const errorMessage = document.getElementById("error-message");
 
       if (enteredPassword === correctPassword) {
-        // Hide the password prompt and show the content
+        loggedIn = true; // Mark as logged in
         document.getElementById("password-section").style.display = "none";
         document.getElementById("content").style.display = "block";
       } else {
@@ -222,43 +249,35 @@
 
     // Function to display the iframe based on the clicked logo
     function showGame(game) {
-      // Hide all iframe elements initially
       const iframes = document.querySelectorAll('iframe');
       iframes.forEach(iframe => {
         iframe.style.display = 'none';
       });
 
-      // Hide the logos to make it immersive
       document.getElementById("content").classList.add('hidden-logos');
 
-      // Show the selected iframe
       const selectedGame = document.getElementById(game);
       if (selectedGame) {
         selectedGame.style.display = 'block';
       }
-
-      // Show the back button
-      document.getElementById("back-btn").style.display = 'block';
     }
 
     // Show Hall of Fame Section
     function showHallOfFame() {
-      alert("Hall of Fame section coming soon!");
+      document.getElementById("hallOfFame").style.display = 'block';
+      document.getElementById("content").style.display = 'none';
+    }
+
+    // Back button functionality
+    function goBack() {
+      document.getElementById("hallOfFame").style.display = 'none';
+      document.getElementById("content").style.display = 'block';
     }
 
     // Show Games Section
     function showGames() {
       alert("Games section is here!");
     }
-
-    // Back button functionality
-    function goBack() {
-      document.getElementById("content").style.display = 'none';
-      document.getElementById("password-section").style.display = 'block';
-    }
   </script>
-
-  <!-- Back Button -->
-  <button class="back-btn" id="back-btn" style="display:none;" onclick="goBack()">Back to Home</button>
 </body>
 </html>
