@@ -5,22 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaming Website</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic Styling for Embedding */
+    iframe {
+      width: 100%;
+      height: 500px; /* Adjust the height for embedding */
+      border: none;
+      margin-bottom: 20px; /* Space between iframes */
+    }
+
+    #gameCanvas {
+      background-color: #f0f0f0;
+    }
+
+    /* Make iframe responsive for smaller screens */
+    @media screen and (max-width: 600px) {
+      iframe {
+        height: 300px; /* Adjust height for smaller screens */
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
     <h1>Welcome to My Gaming Site!</h1>
-    <p>Try out our first game below!</p>
+    <p>Try out our first game below, or play some awesome embedded games!</p>
   </header>
 
   <section id="game-container">
+    <!-- Your Canvas Game -->
     <div id="game">
+      <h2>Your Game</h2>
       <canvas id="gameCanvas" width="500" height="500"></canvas>
+      <button id="startBtn">Start Game</button>
     </div>
-    <button id="startBtn">Start Game</button>
+
+    <!-- Embed Glacier Arcade -->
+    <h2>Play Glacier Arcade!</h2>
+    <iframe src="https://glacierarcade.win" title="Glacier Arcade"></iframe>
+
+    <!-- Embed Real Charger -->
+    <h2>Play Real Charger!</h2>
+    <iframe src="https://see.realcharger.com" title="Real Charger"></iframe>
   </section>
 
   <footer>
-    <p>Made with ❤️ by [Your Name]</p>
+    <p>Made by Zeldym, Aristo4545, Scoredivy717983</p>
   </footer>
 
   <script src="script.js"></script>
