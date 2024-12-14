@@ -1,150 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gaming Website</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Basic Styling for Embedding */
-    iframe {
-      width: 100vw; /* Full width of the viewport */
-      height: 100vh; /* Full height of the viewport */
-      border: none;
-      margin-bottom: 0; /* Remove space between iframes */
-      display: none; /* Initially hidden */
-      max-width: 100%; /* Prevent overflow */
-    }
-
-    #gameCanvas {
-      background-color: #f0f0f0;
-    }
-
-    /* Styling for clickable logo */
-    .logo-link {
-      display: inline-block;
-      width: 150px; /* Adjust the size of the logo */
-      margin: 10px; /* Add spacing between logos */
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .logo-link img {
-      width: 100%;
-      height: auto;
-      border: none;
-    }
-
-    .logo-link img:hover {
-      transform: scale(1.1); /* Slight zoom effect on hover */
-    }
-
-    /* General Container for Intro Page */
-    .intro-container {
-      text-align: center;
-      padding: 40px;
-    }
-
-    h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 40px;
-    }
-
-    /* Grid Layout for Logos */
-    .logo-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      justify-items: center;
-      margin: 0 auto;
-    }
-
-    /* Hide logos when iframe is active */
-    #content.hidden-logos .logo-link {
-      display: none;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Site</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+            margin: 10px;
+        }
+        #games iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+        #cloakSection {
+            display: none;
+        }
+        #settings {
+            margin-top: 20px;
+        }
+        .cloak-button {
+            padding: 10px;
+            background-color: #555;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>MacrohardonFire</h1>
-    <p>Click on the logos below to play some awesome games!</p>
-  </header>
-
-  <!-- Clean Intro Page Section -->
-  <section class="intro-container" id="content">
-    <!-- Logo Container with clickable logos -->
-    <div class="logo-container">
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('glacier')">
-        <img src="https://glacierarcade.win/assets/img/glacierarcade.png" alt="Glacier Arcade Logo" />
-      </a>
-
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('realcharger')">
-        <img src="https://henof.com.in/wp-content/uploads/2024/11/DALL%C2%B7E-2024-11-27-08.58.30-Create-an-illustration-featuring-the-concept-of-a-web-proxy-tool-named-Doge-Unblocker-with-a-playful-design-inspired-by-the-Doge-meme.-The-text-he.webp" alt="Real Charger Logo" />
-      </a>
-
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('nothing')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Nothing_logo_2024.svg" alt="Nothing To Hide Demo Logo" />
-      </a>
-
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('school')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/School_MX_logo.svg" alt="SchoolMXTH Logo" />
-      </a>
-
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('op1um')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Op1um_logo.svg" alt="Op1um Games Logo" />
-      </a>
-
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('acorn')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Acorn13_logo.svg" alt="Acorn13 Logo" />
-      </a>
-
-      <a href="javascript:void(0);" class="logo-link" onclick="showGame('mexismath')">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Mexismath_logo.svg" alt="Mexismath Logo" />
-      </a>
+    <!-- Password Protection -->
+    <div id="password-protect">
+        <h2>Please Enter the Password</h2>
+        <input type="password" id="password" placeholder="Enter Password">
+        <button onclick="checkPassword()">Submit</button>
     </div>
 
-    <!-- Embed section that will show when a logo is clicked -->
-    <div id="gameContainer">
-      <iframe id="glacier" src="https://classroom.global.ssl.fastly.net/gxmes" title="Glacier Arcade" onload="this.style.display = 'block'"></iframe>
-      <iframe id="realcharger" src="https://see.realcharger.com" title="Real Charger" onload="this.style.display = 'block'"></iframe>
-      <iframe id="nothing" src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html" title="Nothing To Hide Demo" onload="this.style.display = 'block'"></iframe>
-      <iframe id="school" src="https://schoolmxth.vr.lt/" title="School MXTH" onload="this.style.display = 'block'"></iframe>
-      <iframe id="op1um" src="https://op1um.pages.dev/games" title="Op1um Games" onload="this.style.display = 'block'"></iframe>
-      <iframe id="acorn" src="https://acorn13.github.io/" title="Acorn13" onload="this.style.display = 'block'"></iframe>
-      <iframe id="mexismath" src="https://mexismath.firebaseapp.com/notebook.html" title="Mexismath Notebook" onload="this.style.display = 'block'"></iframe>
+    <!-- Content (Hidden initially) -->
+    <div id="content" style="display: none;">
+        <header>
+            <h1>Welcome to My Gaming Site!</h1>
+        </header>
+
+        <!-- Games Section -->
+        <section id="games">
+            <h2>Games</h2>
+            <iframe src="https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/89574567@71f165531792ae450fe0a522a52ba4e827344de2/sr3d.xml&container=ig"></iframe>
+            <iframe src="https://www.mortgagecalculator.org/money-games/idle-mining-empire/"></iframe>
+            <iframe src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html"></iframe>
+            <iframe src="https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html"></iframe>
+            <iframe src="https://schoolmxth.vr.lt/"></iframe>
+            <iframe src="https://op1um.pages.dev/games"></iframe>
+            <iframe src="https://acorn13.github.io/"></iframe>
+            <iframe src="https://mexismath.firebaseapp.com/notebook.html"></iframe>
+            <iframe src="https://openprocessing.org/sketch/2093028"></iframe>
+            <iframe src="https://diddygames.github.io/projects.html"></iframe>
+            <iframe src="https://mathworksheetmaker.github.io/Division/"></iframe>
+            <iframe src="https://gt.masplenedigitalworld.com/"></iframe>
+            <iframe src="https://bio.link/googleddd"></iframe>
+            <iframe src="https://sites.google.com/view/dogsandcats-are-fire-gaming123/gms"></iframe>
+        </section>
+
+        <!-- Hall of Fame Section -->
+        <section id="hallOfFame">
+            <h2>Hall of Fame</h2>
+            <p>Shoutout to all the amazing gamers!</p>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings">
+            <h2>Settings</h2>
+            <button class="cloak-button" onclick="cloakPage()">Cloak the Page</button>
+        </section>
     </div>
-  </section>
 
-  <footer>
-    <p>Made by Zeldym, Aristo4545, Scoredivy717983</p>
-  </footer>
+    <script>
+        // Password Protection Function
+        function checkPassword() {
+            const password = document.getElementById('password').value;
+            const correctPassword = "yourpassword";  // Set your password here
+            if (password === correctPassword) {
+                document.getElementById('password-protect').style.display = "none";
+                document.getElementById('content').style.display = "block";
+            } else {
+                alert("Incorrect password! Please try again.");
+            }
+        }
 
-  <script>
-    // Function to display the iframe based on the clicked logo
-    function showGame(game) {
-      // Hide all iframe elements initially
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        iframe.style.display = 'none';
-      });
+        // Cloak Page Function (Hide URL and Keep Content Running)
+        function cloakPage() {
+            // Change the URL in the browser's address bar without reloading the page
+            history.pushState({}, "", "about:blank");  // This hides the URL but keeps the page running
 
-      // Hide the logos to make it immersive
-      document.getElementById("content").classList.add('hidden-logos');
-
-      // Show the selected iframe
-      const selectedGame = document.getElementById(game);
-      if (selectedGame) {
-        selectedGame.style.display = 'block';
-        selectedGame.contentWindow.focus();  // Focus on the iframe to prevent it from freezing
-      }
-    }
-  </script>
+            // Optionally hide the content on the page
+            document.getElementById('content').style.display = 'none';
+        }
+    </script>
 </body>
 </html>
