@@ -44,22 +44,12 @@
             display: none; /* Hide all sections by default */
         }
 
-        #games iframe {
+        /* Game Display */
+        #gameIframe {
             width: 100%;
             height: 500px;
             border: none;
-        }
-
-        #cloakSection {
-            display: none;
-        }
-
-        .cloak-button {
-            padding: 10px;
-            background-color: #555;
-            color: white;
-            border: none;
-            cursor: pointer;
+            display: none; /* Hide iframe by default */
         }
 
         .game-logo {
@@ -165,6 +155,7 @@
                     <p>Real Charger</p>
                 </div>
             </div>
+            <iframe id="gameIframe" src="" style="display: none;"></iframe> <!-- Game iframe -->
         </section>
 
         <!-- Hall of Fame Section -->
@@ -177,12 +168,6 @@
         <section id="settings">
             <h2>Settings</h2>
             <button class="cloak-button" onclick="cloakPage()">Cloak the Page</button>
-        </section>
-
-        <!-- Game Iframe Section -->
-        <section id="gameIframe">
-            <h2>Games</h2>
-            <iframe id="gameFrame" src=""></iframe>
         </section>
     </div>
 
@@ -203,7 +188,7 @@
         // Load Game Function
         function loadGame(url) {
             // Show the iframe with the selected game
-            const iframe = document.getElementById('gameFrame');
+            const iframe = document.getElementById('gameIframe');
             iframe.src = url;
             iframe.style.display = 'block'; // Make the iframe visible
         }
