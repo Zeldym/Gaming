@@ -63,7 +63,7 @@
 
     /* Password Section */
     #password-section {
-      position: absolute;
+      position: fixed; /* Change to fixed to keep it in place */
       top: 0;
       left: 0;
       right: 0;
@@ -79,6 +79,7 @@
       padding: 10px;
       font-size: 16px;
       margin-right: 10px;
+      width: 250px; /* Ensure a fixed width */
     }
 
     #password-section button {
@@ -117,7 +118,7 @@
   <div id="password-section">
     <div>
       <h2>Please enter the password:</h2>
-      <input type="password" id="password" placeholder="Enter password">
+      <input type="password" id="password" placeholder="Enter password" autofocus> <!-- Add autofocus to keep focus on input -->
       <button onclick="checkPassword()">Submit</button>
       <p id="error-message">Incorrect password. Try again.</p>
     </div>
