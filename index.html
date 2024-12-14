@@ -313,28 +313,69 @@
 </head>
 <body>
 
-    <h2>Click the button below to open an empty pop-up window!</h2>
-
-    <!-- Button to open the pop-up window -->
-    <div style="text-align:center; margin-top:50px;">
-        <button onclick="openBlankPopup()">Open About:Blank Pop-Up</button>
-    </div>
-
-    <script>
-        function openBlankPopup() {
-            // Open a new window with about:blank
-            var popupWindow = window.open('about:blank', '_blank', 'width=600,height=400');
-
-            // If the pop-up window is successfully opened, you can modify its content
-            if (popupWindow) {
-                // Example: Add some content to the new window
-                popupWindow.document.write('<h1>Welcome to the Blank Window!</h1>');
-                popupWindow.document.write('<p>This is an empty pop-up window created using about:blank.</p>');
-                popupWindow.document.write('<p>The main website will continue running without interruption.</p>');
-            }
-        }
-    </script>
-
-</body>
-</html>
-
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>About:Blank Pop-Up with Button</title>
+      <style>
+          button {
+              padding: 10px 20px;
+              background-color: #4CAF50;
+              color: white;
+              border: none;
+              cursor: pointer;
+              font-size: 16px;
+          }
+  
+          button:hover {
+              background-color: #45a049;
+          }
+  
+          h2 {
+              text-align: center;
+              margin-top: 20px;
+          }
+      </style>
+  </head>
+  <body>
+  
+      <h2>Click the button below to open an interactive pop-up window!</h2>
+  
+      <!-- Button to open the pop-up window -->
+      <div style="text-align:center; margin-top:50px;">
+          <button onclick="openBlankPopup()">Open About:Blank Pop-Up</button>
+      </div>
+  
+      <script>
+          function openBlankPopup() {
+              // Open a new window with about:blank
+              var popupWindow = window.open('about:blank', '_blank', 'width=600,height=400');
+  
+              // Ensure the new window content is ready before injecting HTML
+              popupWindow.document.write(`
+                  <html>
+                  <head><title>Interactive Pop-Up</title></head>
+                  <body>
+                      <h1>Welcome to the Pop-Up!</h1>
+                      <p>This pop-up window has a button you can click.</p>
+                      <button id="clickMeBtn">Click Me!</button>
+  
+                      <script>
+                          document.getElementById('clickMeBtn').onclick = function() {
+                              alert('Button clicked in pop-up!');
+                          };
+                      <\/script>
+                  </body>
+                  </html>
+              `);
+  
+              // Close the document to complete rendering
+              popupWindow.document.close();
+          }
+      </script>
+  
+  </body>
+  </html>
+  
