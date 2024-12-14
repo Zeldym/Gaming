@@ -17,22 +17,43 @@
             padding: 10px 0;
             text-align: center;
         }
+        /* Navigation Menu */
+        #navMenu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #navMenu a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+        #navMenu a:hover {
+            background-color: #555;
+            border-radius: 5px;
+        }
+
         section {
             padding: 20px;
             margin: 10px;
+            display: none; /* Hide all sections by default */
         }
+
         #games iframe {
             width: 100%;
             height: 500px;
             border: none;
-            display: none;
         }
+
         #cloakSection {
             display: none;
         }
-        #settings {
-            margin-top: 20px;
-        }
+
         .cloak-button {
             padding: 10px;
             background-color: #555;
@@ -40,6 +61,7 @@
             border: none;
             cursor: pointer;
         }
+
         .game-logo {
             margin: 10px;
             padding: 10px;
@@ -50,19 +72,23 @@
             width: 200px;
             display: inline-block;
         }
+
         .game-logo:hover {
             background-color: #bbb;
         }
+
         .logo-container {
             display: flex;
             justify-content: space-around;
             flex-wrap: wrap;
         }
+
         .game-logo img {
             width: 100%;
             height: auto;
             max-width: 150px;
         }
+
     </style>
 </head>
 <body>
@@ -73,14 +99,21 @@
         <button onclick="checkPassword()">Submit</button>
     </div>
 
+    <!-- Navigation Menu -->
+    <div id="navMenu">
+        <a href="javascript:void(0);" onclick="showSection('games')">Games</a>
+        <a href="javascript:void(0);" onclick="showSection('hallOfFame')">Hall of Fame</a>
+        <a href="javascript:void(0);" onclick="showSection('settings')">Settings</a>
+    </div>
+
     <!-- Content (Hidden initially) -->
     <div id="content" style="display: none;">
         <header>
-            <h1>Macro Hard on Fire</h1>
+            <h1>Welcome to My Gaming Site!</h1>
         </header>
 
         <!-- Game Logos Section -->
-        <section id="gameLogos">
+        <section id="games">
             <h2>Click a Logo to Play</h2>
             <div class="logo-container">
                 <div class="game-logo" onclick="loadGame('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/89574567@71f165531792ae450fe0a522a52ba4e827344de2/sr3d.xml&container=ig')">
@@ -127,23 +160,17 @@
                     <img src="https://via.placeholder.com/150?text=Game+11" alt="Game 11">
                     <p>Game 11</p>
                 </div>
+                <div class="game-logo" onclick="loadGame('https://see.realcharger.com')">
+                    <img src="https://via.placeholder.com/150?text=Real+Charger" alt="Real Charger">
+                    <p>Real Charger</p>
+                </div>
             </div>
-          <div class="game-logo" onclick="loadGame('https://see.realcharger.com')">
-            <img src="https://via.placeholder.com/150?text=Real+Charger" alt="Doge Unblocker">
-            <p>Real Charger</p>
-        </div>
-    </div>
-</section>
-
+        </section>
 
         <!-- Hall of Fame Section -->
         <section id="hallOfFame">
             <h2>Hall of Fame</h2>
-            <p>Shoutout to all the amazing gamers!
-                The creators - Zeldym, Aristo4545, Scordivy717983
-                Thanks to - Mally, krishydafishy for letting me embedd their websites 
-
-            </p>
+            <p>Shoutout to all the amazing gamers!</p>
         </section>
 
         <!-- Settings Section -->
@@ -153,7 +180,7 @@
         </section>
 
         <!-- Game Iframe Section -->
-        <section id="games">
+        <section id="gameIframe">
             <h2>Games</h2>
             <iframe id="gameFrame" src=""></iframe>
         </section>
@@ -163,10 +190,11 @@
         // Password Protection Function
         function checkPassword() {
             const password = document.getElementById('password').value;
-            const correctPassword = "VIRATKOHLIISTHEGOATANDRONALDOTOO";  // Set your password here
+            const correctPassword = "yourpassword";  // Set your password here
             if (password === correctPassword) {
                 document.getElementById('password-protect').style.display = "none";
                 document.getElementById('content').style.display = "block";
+                showSection('games'); // Show the Games section by default
             } else {
                 alert("Incorrect password! Please try again.");
             }
@@ -184,6 +212,19 @@
         function cloakPage() {
             // Open an about:blank window
             window.open('about:blank', '_blank');
+        }
+
+        // Show the specific section
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.display = 'none';
+            });
+
+            // Show the selected section
+            const selectedSection = document.getElementById(sectionId);
+            selectedSection.style.display = 'block';
         }
     </script>
 </body>
