@@ -8,23 +8,16 @@
   <style>
     /* Basic Styling for Embedding */
     iframe {
-      width: 100%;
-      height: 80vh; /* Height adjusted to fit the screen */
+      width: 100vw; /* Full width of the viewport */
+      height: 100vh; /* Full height of the viewport */
       border: none;
-      margin-bottom: 20px; /* Space between iframes */
+      margin-bottom: 0; /* Remove space between iframes */
       display: none; /* Initially hidden */
-      max-width: 100%; /* Ensures iframes don't overflow */
+      max-width: 100%; /* Prevent overflow */
     }
 
     #gameCanvas {
       background-color: #f0f0f0;
-    }
-
-    /* Make iframe responsive for smaller screens */
-    @media screen and (max-width: 600px) {
-      iframe {
-        height: 60vh; /* Adjust height for smaller screens */
-      }
     }
 
     /* Styling for clickable logo */
@@ -101,6 +94,11 @@
       color: red;
       display: none;
     }
+
+    /* Hide logos when iframe is active */
+    #content.hidden-logos .logo-link {
+      display: none;
+    }
   </style>
 </head>
 <body>
@@ -131,13 +129,9 @@
         <img src="https://henof.com.in/wp-content/uploads/2024/11/DALL%C2%B7E-2024-11-27-08.58.30-Create-an-illustration-featuring-the-concept-of-a-web-proxy-tool-named-Doge-Unblocker-with-a-playful-design-inspired-by-the-Doge-meme.-The-text-he.webp" alt="Real Charger Logo" />
       </a>
 
-     
-
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('nothing')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Nothing_logo_2024.svg" alt="Nothing To Hide Demo Logo" />
       </a>
-
-      
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('school')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/School_MX_logo.svg" alt="SchoolMXTH Logo" />
@@ -153,24 +147,18 @@
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('mexismath')">
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Mexismath_logo.svg" alt="Mexismath Logo" />
-      
-
-      
-      
+      </a>
     </div>
 
     <!-- Embed section that will show when a logo is clicked -->
     <div id="gameContainer">
       <iframe id="glacier" src="https://classroom.global.ssl.fastly.net/gxmes" title="Glacier Arcade"></iframe>
       <iframe id="realcharger" src="https://see.realcharger.com" title="Real Charger"></iframe>
-      
       <iframe id="nothing" src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html" title="Nothing To Hide Demo"></iframe>
-    
       <iframe id="school" src="https://schoolmxth.vr.lt/" title="School MXTH"></iframe>
       <iframe id="op1um" src="https://op1um.pages.dev/games" title="Op1um Games"></iframe>
       <iframe id="acorn" src="https://acorn13.github.io/" title="Acorn13"></iframe>
       <iframe id="mexismath" src="https://mexismath.firebaseapp.com/notebook.html" title="Mexismath Notebook"></iframe>
-     
     </div>
   </section>
 
@@ -204,6 +192,9 @@
         iframe.style.display = 'none';
       });
 
+      // Hide the logos to make it immersive
+      document.getElementById("content").classList.add('hidden-logos');
+
       // Show the selected iframe
       const selectedGame = document.getElementById(game);
       if (selectedGame) {
@@ -213,4 +204,5 @@
   </script>
 </body>
 </html>
+
 
