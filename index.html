@@ -1,216 +1,187 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Site</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        /* Navigation Menu */
-        #navMenu {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background-color: #333;
-            padding: 10px;
-            border-radius: 5px;
-        }
-        #navMenu a {
-            color: white;
-            text-decoration: none;
-            padding: 10px;
-            margin-left: 10px;
-            font-size: 16px;
-        }
-        #navMenu a:hover {
-            background-color: #555;
-            border-radius: 5px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaming Website</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Basic Styling for Embedding */
+    iframe {
+      width: 100vw; /* Full width of the viewport */
+      height: 100vh; /* Full height of the viewport */
+      border: none;
+      display: none; /* Initially hidden */
+      max-width: 100%; /* Prevent overflow */
+    }
 
-        section {
-            padding: 20px;
-            margin: 10px;
-            display: none; /* Hide all sections by default */
-        }
+    /* Styling for the home page */
+    .intro-container {
+      text-align: center;
+      padding: 40px;
+    }
 
-        /* Game Display */
-        #gameIframe {
-            width: 100%;
-            height: 500px;
-            border: none;
-            display: none; /* Hide iframe by default */
-        }
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
 
-        .game-logo {
-            margin: 10px;
-            padding: 10px;
-            background-color: #ddd;
-            border-radius: 5px;
-            text-align: center;
-            cursor: pointer;
-            width: 200px;
-            display: inline-block;
-        }
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
 
-        .game-logo:hover {
-            background-color: #bbb;
-        }
+    /* Grid Layout for Logos */
+    .logo-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      justify-items: center;
+      margin: 0 auto;
+    }
 
-        .logo-container {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
+    .logo-link {
+      display: inline-block;
+      width: 150px; /* Adjust the size of the logo */
+      margin: 10px; /* Add spacing between logos */
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-        .game-logo img {
-            width: 100%;
-            height: auto;
-            max-width: 150px;
-        }
+    .logo-link img {
+      width: 100%;
+      height: auto;
+      border: none;
+    }
 
-    </style>
+    .logo-link img:hover {
+      transform: scale(1.1); /* Slight zoom effect on hover */
+    }
+
+    /* Back Button styling */
+    #back-button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 10px 20px;
+      background-color: #333;
+      color: white;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      display: none; /* Initially hidden */
+    }
+
+    /* Hide logos when iframe is active */
+    #content.hidden-logos .logo-link {
+      display: none;
+    }
+
+    /* Back to Home Screen */
+    #content.home-screen {
+      display: block;
+    }
+
+    #gameContainer {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <!-- Password Protection -->
-    <div id="password-protect">
-        <h2>Please Enter the Password</h2>
-        <input type="password" id="password" placeholder="Enter Password" autofocus>
-        <button onclick="checkPassword()">Submit</button>
+  <header>
+    <h1>MacrohardonFire</h1>
+    <p>Click on the logos below to play some awesome games!</p>
+  </header>
+
+  <!-- Clean Intro Page Section -->
+  <section class="intro-container" id="content">
+    <!-- Logo Container with clickable logos -->
+    <div class="logo-container">
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('glacier')">
+        <img src="https://glacierarcade.win/assets/img/glacierarcade.png" alt="Glacier Arcade Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('realcharger')">
+        <img src="https://henof.com.in/wp-content/uploads/2024/11/DALL%C2%B7E-2024-11-27-08.58.30-Create-an-illustration-featuring-the-concept-of-a-web-proxy-tool-named-Doge-Unblocker-with-a-playful-design-inspired-by-the-Doge-meme.-The-text-he.webp" alt="Real Charger Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('nothing')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Nothing_logo_2024.svg" alt="Nothing To Hide Demo Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('school')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/School_MX_logo.svg" alt="SchoolMXTH Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('op1um')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Op1um_logo.svg" alt="Op1um Games Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('acorn')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Acorn13_logo.svg" alt="Acorn13 Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('mexismath')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Mexismath_logo.svg" alt="Mexismath Logo" />
+      </a>
     </div>
+  </section>
 
-    <!-- Navigation Menu -->
-    <div id="navMenu">
-        <a href="javascript:void(0);" onclick="showSection('games')">Games</a>
-        <a href="javascript:void(0);" onclick="showSection('hallOfFame')">Hall of Fame</a>
-        <a href="javascript:void(0);" onclick="showSection('settings')">Settings</a>
-    </div>
+  <!-- Back Button -->
+  <button id="back-button" onclick="goBack()">Back</button>
 
-    <!-- Content (Hidden initially) -->
-    <div id="content" style="display: none;">
-        <header>
-            <h1>Welcome to My Gaming Site!</h1>
-        </header>
+  <!-- Embed section that will show when a logo is clicked -->
+  <div id="gameContainer">
+    <iframe id="glacier" src="https://classroom.global.ssl.fastly.net/gxmes" title="Glacier Arcade"></iframe>
+    <iframe id="realcharger" src="https://see.realcharger.com" title="Real Charger"></iframe>
+    <iframe id="nothing" src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html" title="Nothing To Hide Demo"></iframe>
+    <iframe id="school" src="https://schoolmxth.vr.lt/" title="School MXTH"></iframe>
+    <iframe id="op1um" src="https://op1um.pages.dev/games" title="Op1um Games"></iframe>
+    <iframe id="acorn" src="https://acorn13.github.io/" title="Acorn13"></iframe>
+    <iframe id="mexismath" src="https://mexismath.firebaseapp.com/notebook.html" title="Mexismath Notebook"></iframe>
+  </div>
 
-        <!-- Game Logos Section -->
-        <section id="games">
-            <h2>Click a Logo to Play</h2>
-            <div class="logo-container">
-                <div class="game-logo" onclick="loadGame('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/89574567@71f165531792ae450fe0a522a52ba4e827344de2/sr3d.xml&container=ig')">
-                    <img src="https://via.placeholder.com/150?text=Game+1" alt="Game 1">
-                    <p>Game 1</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html')">
-                    <img src="https://via.placeholder.com/150?text=Game+2" alt="Game 2">
-                    <p>Game 2</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://schoolmxth.vr.lt/')">
-                    <img src="https://via.placeholder.com/150?text=Game+3" alt="Game 3">
-                    <p>Game 3</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://op1um.pages.dev/games')">
-                    <img src="https://via.placeholder.com/150?text=Game+4" alt="Game 4">
-                    <p>Game 4</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://acorn13.github.io/')">
-                    <img src="https://via.placeholder.com/150?text=Game+5" alt="Game 5">
-                    <p>Game 5</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://mexismath.firebaseapp.com/notebook.html')">
-                    <img src="https://via.placeholder.com/150?text=Game+6" alt="Game 6">
-                    <p>Game 6</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://diddygames.github.io/projects.html')">
-                    <img src="https://via.placeholder.com/150?text=Game+7" alt="Game 7">
-                    <p>Game 7</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://mathworksheetmaker.github.io/Division/')">
-                    <img src="https://via.placeholder.com/150?text=Game+8" alt="Game 8">
-                    <p>Game 8</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://gt.masplenedigitalworld.com/')">
-                    <img src="https://via.placeholder.com/150?text=Game+9" alt="Game 9">
-                    <p>Game 9</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://bio.link/googleddd')">
-                    <img src="https://via.placeholder.com/150?text=Game+10" alt="Game 10">
-                    <p>Game 10</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://sites.google.com/view/dogsandcats-are-fire-gaming123/gms')">
-                    <img src="https://via.placeholder.com/150?text=Game+11" alt="Game 11">
-                    <p>Game 11</p>
-                </div>
-                <div class="game-logo" onclick="loadGame('https://see.realcharger.com')">
-                    <img src="https://via.placeholder.com/150?text=Real+Charger" alt="Real Charger">
-                    <p>Real Charger</p>
-                </div>
-            </div>
-            <iframe id="gameIframe" src="" style="display: none;"></iframe> <!-- Game iframe -->
-        </section>
+  <footer>
+    <p>Made by Zeldym, Aristo4545, Scoredivy717983</p>
+  </footer>
 
-        <!-- Hall of Fame Section -->
-        <section id="hallOfFame">
-            <h2>Hall of Fame</h2>
-            <p>Shoutout to all the amazing gamers!</p>
-        </section>
+  <script>
+    // Function to display the iframe based on the clicked logo
+    function showGame(game) {
+      // Hide all iframe elements initially
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        iframe.style.display = 'none';
+      });
 
-        <!-- Settings Section -->
-        <section id="settings">
-            <h2>Settings</h2>
-            <button class="cloak-button" onclick="cloakPage()">Cloak the Page</button>
-        </section>
-    </div>
+      // Hide the logos to make it immersive
+      document.getElementById("content").classList.add('hidden-logos');
 
-    <script>
-        // Password Protection Function
-        function checkPassword() {
-            const password = document.getElementById('password').value;
-            const correctPassword = "eminemradiostationohio";  // Set your password here
-            if (password === correctPassword) {
-                document.getElementById('password-protect').style.display = "none";
-                document.getElementById('content').style.display = "block";
-                showSection('games'); // Show the Games section by default
-            } else {
-                alert("Incorrect password! Please try again.");
-            }
-        }
+      // Show the selected iframe
+      const selectedGame = document.getElementById(game);
+      if (selectedGame) {
+        selectedGame.style.display = 'block';
+      }
 
-        // Load Game Function
-        function loadGame(url) {
-            // Show the iframe with the selected game
-            const iframe = document.getElementById('gameIframe');
-            iframe.src = url;
-            iframe.style.display = 'block'; // Make the iframe visible
-        }
+      // Show the back button
+      document.getElementById("back-button").style.display = 'block';
+    }
 
-        // Cloak Page Function (Open an about:blank window)
-        function cloakPage() {
-            // Open an about:blank window
-            window.open('about:blank', '_blank');
-        }
+    // Function to go back to the home screen
+    function goBack() {
+      // Hide all iframes when going back
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        iframe.style.display = 'none';
+      });
 
-        // Show the specific section
-        function showSection(sectionId) {
-            // Hide all sections
-            const sections = document.querySelectorAll('section');
-            sections.forEach(section => {
-                section.style.display = 'none';
-            });
+      // Show the logos again
+      document.getElementById("content").classList.remove('hidden-logos');
 
-            // Show the selected section
-            const selectedSection = document.getElementById(sectionId);
-            selectedSection.style.display = 'block';
-        }
-    </script>
+      // Hide the back button
+      document.getElementById("back-button").style.display = 'none';
+    }
+  </script>
 </body>
 </html>
