@@ -63,23 +63,23 @@
 
     /* Password Section */
     #password-section {
-      position: fixed; /* Change to fixed to keep it in place */
+      position: fixed; /* Fixed position to cover entire screen */
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7);
+      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 1000; /* Ensure it's on top of all other content */
+      flex-direction: column; /* Stack the elements vertically */
     }
 
     #password-section input {
       padding: 10px;
       font-size: 16px;
       margin-right: 10px;
-      width: 250px; /* Ensure a fixed width */
     }
 
     #password-section button {
@@ -89,7 +89,7 @@
 
     #error-message {
       color: red;
-      display: none;
+      display: none; /* Hide error message by default */
     }
 
     /* Hide logos when iframe is active */
@@ -118,7 +118,7 @@
   <div id="password-section">
     <div>
       <h2>Please enter the password:</h2>
-      <input type="password" id="password" placeholder="Enter password" autofocus> <!-- Add autofocus to keep focus on input -->
+      <input type="password" id="password" placeholder="Enter password">
       <button onclick="checkPassword()">Submit</button>
       <p id="error-message">Incorrect password. Try again.</p>
     </div>
@@ -186,6 +186,7 @@
         // Hide the password prompt and show the content
         document.getElementById("password-section").style.display = "none";
         document.getElementById("content").style.display = "block";
+        document.body.style.overflow = "auto"; // Enable scrolling once password is correct
       } else {
         errorMessage.style.display = "block"; // Show error message if password is incorrect
       }
@@ -207,6 +208,12 @@
       if (selectedGame) {
         selectedGame.style.display = 'block';
       }
+    }
+
+    // Ensure the input field is focused when the page loads
+    window.onload = function() {
+      document.getElementById("password").focus();
+      document.body.style.overflow = "hidden"; // Disable scrolling when password section is visible
     }
   </script>
 </body>
