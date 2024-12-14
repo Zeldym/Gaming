@@ -65,36 +65,6 @@
       margin: 0 auto;
     }
 
-    /* Password Section */
-    #password-section {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-    }
-
-    #password-section input {
-      padding: 10px;
-      font-size: 16px;
-      margin-right: 10px;
-    }
-
-    #password-section button {
-      padding: 10px 20px;
-      font-size: 16px;
-    }
-
-    #error-message {
-      color: red;
-      display: none;
-    }
-
     /* Hide logos when iframe is active */
     #content.hidden-logos .logo-link {
       display: none;
@@ -107,18 +77,8 @@
     <p>Click on the logos below to play some awesome games!</p>
   </header>
 
-  <!-- Password Protection Section -->
-  <div id="password-section">
-    <div>
-      <h2>Please enter the password:</h2>
-      <input type="password" id="password" placeholder="Enter password">
-      <button onclick="checkPassword()">Submit</button>
-      <p id="error-message">Incorrect password. Try again.</p>
-    </div>
-  </div>
-
   <!-- Clean Intro Page Section -->
-  <section class="intro-container" id="content" style="display:none;">
+  <section class="intro-container" id="content">
     <!-- Logo Container with clickable logos -->
     <div class="logo-container">
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('glacier')">
@@ -167,23 +127,6 @@
   </footer>
 
   <script>
-    // Password for access
-    const correctPassword = "wheredidblockergosuty@ohiogyattrizzohiogigariodgyatt"; // Replace with your desired password
-
-    // Function to check the password
-    function checkPassword() {
-      const enteredPassword = document.getElementById("password").value;
-      const errorMessage = document.getElementById("error-message");
-
-      if (enteredPassword === correctPassword) {
-        // Hide the password prompt and show the content
-        document.getElementById("password-section").style.display = "none";
-        document.getElementById("content").style.display = "block";
-      } else {
-        errorMessage.style.display = "block"; // Show error message if password is incorrect
-      }
-    }
-
     // Function to display the iframe based on the clicked logo
     function showGame(game) {
       // Hide all iframe elements initially
@@ -205,4 +148,3 @@
   </script>
 </body>
 </html>
-
