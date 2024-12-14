@@ -9,10 +9,11 @@
     /* Basic Styling for Embedding */
     iframe {
       width: 100%;
-      height: 80vh; /* Use a percentage-based height for better responsiveness */
+      height: 80vh; /* Height adjusted to fit the screen */
       border: none;
       margin-bottom: 20px; /* Space between iframes */
       display: none; /* Initially hidden */
+      max-width: 100%; /* Ensures iframes don't overflow */
     }
 
     #gameCanvas {
@@ -28,18 +29,18 @@
 
     /* Styling for clickable logo */
     .logo-link {
-      display: block;
-      width: 200px; /* Adjust the size of the logo */
-      margin: 20px auto; /* Center and add spacing between logos */
+      display: inline-block;
+      width: 150px; /* Adjust the size of the logo */
+      margin: 10px; /* Add spacing between logos */
       text-align: center;
+      cursor: pointer;
+      transition: transform 0.3s ease;
     }
 
     .logo-link img {
       width: 100%;
       height: auto;
-      cursor: pointer;
       border: none;
-      transition: transform 0.3s ease;
     }
 
     .logo-link img:hover {
@@ -60,6 +61,15 @@
     p {
       font-size: 18px;
       margin-bottom: 40px;
+    }
+
+    /* Grid Layout for Logos */
+    .logo-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      justify-items: center;
+      margin: 0 auto;
     }
 
     /* Password Section */
@@ -111,41 +121,48 @@
 
   <!-- Clean Intro Page Section -->
   <section class="intro-container" id="content" style="display:none;">
-    <!-- Clickable Logo for Glacier Arcade -->
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('glacier')">
-      <img src="https://glacierarcade.win/assets/img/glacierarcade.png" alt="Glacier Arcade Logo" />
-    </a>
+    <!-- Logo Container with clickable logos -->
+    <div class="logo-container">
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('glacier')">
+        <img src="https://glacierarcade.win/assets/img/glacierarcade.png" alt="Glacier Arcade Logo" />
+      </a>
 
-    <!-- Clickable Logo for Real Charger -->
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('realcharger')">
-      <img src="https://henof.com.in/wp-content/uploads/2024/11/DALL%C2%B7E-2024-11-27-08.58.30-Create-an-illustration-featuring-the-concept-of-a-web-proxy-tool-named-Doge-Unblocker-with-a-playful-design-inspired-by-the-Doge-meme.-The-text-he.webp" alt="Real Charger Logo" />
-    </a>
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('realcharger')">
+        <img src="https://henof.com.in/wp-content/uploads/2024/11/DALL%C2%B7E-2024-11-27-08.58.30-Create-an-illustration-featuring-the-concept-of-a-web-proxy-tool-named-Doge-Unblocker-with-a-playful-design-inspired-by-the-Doge-meme.-The-text-he.webp" alt="Real Charger Logo" />
+      </a>
 
-    <!-- Clickable Logos for Other Games -->
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('mining')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Minecraft_logo.svg" alt="Idle Mining Empire Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('nothing')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Nothing_logo_2024.svg" alt="Nothing To Hide Demo Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('cloudfront')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Cloudfront_logo.svg" alt="Cloudfront Game Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('school')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/School_MX_logo.svg" alt="SchoolMXTH Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('op1um')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Op1um_logo.svg" alt="Op1um Games Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('acorn')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Acorn13_logo.svg" alt="Acorn13 Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('mexismath')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Mexismath_logo.svg" alt="Mexismath Logo" />
-    </a>
-    <a href="javascript:void(0);" class="logo-link" onclick="showGame('processing')">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/OpenProcessing_logo.svg" alt="OpenProcessing Logo" />
-    </a>
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('mining')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Minecraft_logo.svg" alt="Idle Mining Empire Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('nothing')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Nothing_logo_2024.svg" alt="Nothing To Hide Demo Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('cloudfront')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Cloudfront_logo.svg" alt="Cloudfront Game Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('school')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/School_MX_logo.svg" alt="SchoolMXTH Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('op1um')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Op1um_logo.svg" alt="Op1um Games Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('acorn')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Acorn13_logo.svg" alt="Acorn13 Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('mexismath')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Mexismath_logo.svg" alt="Mexismath Logo" />
+      </a>
+
+      <a href="javascript:void(0);" class="logo-link" onclick="showGame('processing')">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/OpenProcessing_logo.svg" alt="OpenProcessing Logo" />
+      </a>
+    </div>
 
     <!-- Embed section that will show when a logo is clicked -->
     <div id="gameContainer">
