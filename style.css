@@ -1,49 +1,52 @@
 body {
+  body {
     font-family: Arial, sans-serif;
-    background-color: #282c34;
+    background-image: url('https://www.designyourway.net/blog/wp-content/uploads/2018/01/cool-desktop-wallpaper-wallpapers-backgrounds-images-art-photos-pictures-free-best-1920x1080_coolwallpaper_good-wallpaper-ideas-house-entrance-design-hand-coat-hooks-7-princip.jpg'); /* Set background image */
+    background-size: cover; /* Ensure the image covers the entire page */
+    background-position: center; /* Center the image */
+    background-attachment: fixed; /* Make sure the image stays fixed when scrolling */
     color: white;
     text-align: center;
     margin: 0;
     padding: 0;
-  }
-  
-  header {
-    background-color: #333;
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.8); /* Semi-transparent header */
     padding: 20px;
-  }
-  
-  h1 {
+}
+
+h1 {
     margin: 0;
-  }
-  
-  #game-container {
+}
+
+#game-container {
     padding: 20px;
-  }
-  
-  canvas {
+}
+
+canvas {
     border: 2px solid #fff;
     background-color: #000;
-  }
-  
-  button {
+}
+
+button {
     background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     margin-top: 20px;
     font-size: 18px;
     cursor: pointer;
-  }
-  
-  button:hover {
+}
+
+button:hover {
     background-color: #45a049;
-  }
-  
-  footer {
+}
+
+footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255, 255, 255, 0.5);
     color: rgb(0, 0, 0);
     padding: 10px;
-  }
-  
+}
