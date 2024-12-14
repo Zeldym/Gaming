@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaming Website</title>
-  <link rel="stylesheet" href="style.css">
   <style>
     /* Basic Styling for Embedding */
     iframe {
@@ -36,50 +35,25 @@
       transform: scale(1.1); /* Slight zoom effect on hover */
     }
 
-    /* General Container for Intro Page */
-    .intro-container {
-      text-align: center;
-      padding: 40px;
-    }
-
-    h1 {
-      font-size: 36px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 18px;
-      margin-bottom: 40px;
-    }
-
-    /* Grid Layout for Logos */
-    .logo-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-      gap: 15px;
-      justify-items: center;
-      margin: 0 auto;
-    }
-
     /* Password Section */
     #password-section {
-      position: fixed; /* Fixed position to cover entire screen */
+      position: absolute;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+      background-color: rgba(0, 0, 0, 0.7);
       display: flex;
       justify-content: center;
       align-items: center;
-      z-index: 1000; /* Ensure it's on top of all other content */
-      flex-direction: column; /* Stack the elements vertically */
+      z-index: 1000;
     }
 
     #password-section input {
       padding: 10px;
       font-size: 16px;
       margin-right: 10px;
+      outline: none;
     }
 
     #password-section button {
@@ -89,7 +63,7 @@
 
     #error-message {
       color: red;
-      display: none; /* Hide error message by default */
+      display: none;
     }
 
     /* Hide logos when iframe is active */
@@ -209,12 +183,11 @@
       }
     }
 
-    // Ensure the password input is focused when the page loads
+    // Focus on password input immediately after page loads
     window.onload = function() {
-      // Focus on the password input directly
-      document.getElementById("password").focus();
-    };
+      document.getElementById("password").focus(); // Ensure focus stays
+    }
+
   </script>
 </body>
 </html>
-
