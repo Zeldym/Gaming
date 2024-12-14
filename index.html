@@ -147,15 +147,7 @@
     <p>Click on the logos below to play some awesome games!</p>
   </header>
 
-  <!-- Password Protection Section -->
-  <div id="password-section">
-    <div>
-      <h2>Please enter the password:</h2>
-      <input type="password" id="password" placeholder="Enter password">
-      <button onclick="checkPassword()">Submit</button>
-      <p id="error-message">Incorrect password. Try again.</p>
-    </div>
-  </div>
+
 
   <!-- Top Menu -->
   <div class="top-menu">
@@ -240,23 +232,7 @@
   </footer>
 
   <script>
-    // Password for access
-    const correctPassword = "eminemradiostationohio"; // Replace with your desired password
-    let loggedIn = false;
-
-    // Function to check the password
-    function checkPassword() {
-      const enteredPassword = document.getElementById("password").value;
-      const errorMessage = document.getElementById("error-message");
-
-      if (enteredPassword === correctPassword) {
-        loggedIn = true; // Mark as logged in
-        document.getElementById("password-section").style.display = "none";
-        document.getElementById("content").style.display = "block";
-      } else {
-        errorMessage.style.display = "block"; // Show error message if password is incorrect
-      }
-    }
+   
 
     // Function to display the iframe based on the clicked logo
     function showGame(game) {
