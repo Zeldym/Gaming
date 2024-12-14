@@ -25,6 +25,7 @@
             width: 100%;
             height: 500px;
             border: none;
+            display: none;
         }
         #cloakSection {
             display: none;
@@ -39,13 +40,36 @@
             border: none;
             cursor: pointer;
         }
+        .game-logo {
+            margin: 10px;
+            padding: 10px;
+            background-color: #ddd;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            width: 200px;
+            display: inline-block;
+        }
+        .game-logo:hover {
+            background-color: #bbb;
+        }
+        .logo-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .game-logo img {
+            width: 100%;
+            height: auto;
+            max-width: 150px;
+        }
     </style>
 </head>
 <body>
     <!-- Password Protection -->
     <div id="password-protect">
         <h2>Please Enter the Password</h2>
-        <input type="password" id="password" placeholder="Enter Password">
+        <input type="password" id="password" placeholder="Enter Password" autofocus>
         <button onclick="checkPassword()">Submit</button>
     </div>
 
@@ -55,23 +79,28 @@
             <h1>Welcome to My Gaming Site!</h1>
         </header>
 
-        <!-- Games Section -->
-        <section id="games">
-            <h2>Games</h2>
-            <iframe src="https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/89574567@71f165531792ae450fe0a522a52ba4e827344de2/sr3d.xml&container=ig"></iframe>
-            <iframe src="https://www.mortgagecalculator.org/money-games/idle-mining-empire/"></iframe>
-            <iframe src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html"></iframe>
-            <iframe src="https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html"></iframe>
-            <iframe src="https://schoolmxth.vr.lt/"></iframe>
-            <iframe src="https://op1um.pages.dev/games"></iframe>
-            <iframe src="https://acorn13.github.io/"></iframe>
-            <iframe src="https://mexismath.firebaseapp.com/notebook.html"></iframe>
-            <iframe src="https://openprocessing.org/sketch/2093028"></iframe>
-            <iframe src="https://diddygames.github.io/projects.html"></iframe>
-            <iframe src="https://mathworksheetmaker.github.io/Division/"></iframe>
-            <iframe src="https://gt.masplenedigitalworld.com/"></iframe>
-            <iframe src="https://bio.link/googleddd"></iframe>
-            <iframe src="https://sites.google.com/view/dogsandcats-are-fire-gaming123/gms"></iframe>
+        <!-- Game Logos Section -->
+        <section id="gameLogos">
+            <h2>Click a Logo to Play</h2>
+            <div class="logo-container">
+                <div class="game-logo" onclick="loadGame('https://images-opensocial.googleusercontent.com/gadgets/ifr?url=https://cdn.jsdelivr.net/gh/sk1bx/89574567@71f165531792ae450fe0a522a52ba4e827344de2/sr3d.xml&container=ig')">
+                    <img src="https://via.placeholder.com/150?text=Game+1" alt="Game 1">
+                    <p>Game 1</p>
+                </div>
+                <div class="game-logo" onclick="loadGame('https://www.mortgagecalculator.org/money-games/idle-mining-empire/')">
+                    <img src="https://via.placeholder.com/150?text=Game+2" alt="Game 2">
+                    <p>Game 2</p>
+                </div>
+                <div class="game-logo" onclick="loadGame('https://nothing-to-hide-demo.s3.amazonaws.com/index.html')">
+                    <img src="https://via.placeholder.com/150?text=Game+3" alt="Game 3">
+                    <p>Game 3</p>
+                </div>
+                <div class="game-logo" onclick="loadGame('https://d1tm91r4ytbt54.cloudfront.net/2779cbcb-a02f-48a3-9e2e-95a8d123d165/1685483461665/web/index.html')">
+                    <img src="https://via.placeholder.com/150?text=Game+4" alt="Game 4">
+                    <p>Game 4</p>
+                </div>
+                <!-- Add more game logos as needed -->
+            </div>
         </section>
 
         <!-- Hall of Fame Section -->
@@ -84,6 +113,12 @@
         <section id="settings">
             <h2>Settings</h2>
             <button class="cloak-button" onclick="cloakPage()">Cloak the Page</button>
+        </section>
+
+        <!-- Game Iframe Section -->
+        <section id="games">
+            <h2>Games</h2>
+            <iframe id="gameFrame" src=""></iframe>
         </section>
     </div>
 
@@ -98,6 +133,14 @@
             } else {
                 alert("Incorrect password! Please try again.");
             }
+        }
+
+        // Load Game Function
+        function loadGame(url) {
+            // Show the iframe with the selected game
+            const iframe = document.getElementById('gameFrame');
+            iframe.src = url;
+            iframe.style.display = 'block'; // Make the iframe visible
         }
 
         // Cloak Page Function (Hide URL and Keep Content Running)
