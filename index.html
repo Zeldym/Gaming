@@ -118,7 +118,7 @@
   <div id="password-section">
     <div>
       <h2>Please enter the password:</h2>
-      <input type="password" id="password" placeholder="Enter password">
+      <input type="password" id="password" placeholder="Enter password" onfocus="this.select();">
       <button onclick="checkPassword()">Submit</button>
       <p id="error-message">Incorrect password. Try again.</p>
     </div>
@@ -186,7 +186,6 @@
         // Hide the password prompt and show the content
         document.getElementById("password-section").style.display = "none";
         document.getElementById("content").style.display = "block";
-        document.body.style.overflow = "auto"; // Enable scrolling once password is correct
       } else {
         errorMessage.style.display = "block"; // Show error message if password is incorrect
       }
@@ -210,11 +209,9 @@
       }
     }
 
-    // Ensure the input field is focused after a short delay to prevent it from losing focus
+    // Focus the password input immediately on page load
     window.onload = function() {
-      setTimeout(function() {
-        document.getElementById("password").focus();
-      }, 200); // Delay to ensure focus happens after everything is loaded
+      document.getElementById("password").focus();
       document.body.style.overflow = "hidden"; // Disable scrolling when password section is visible
     }
   </script>
