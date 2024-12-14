@@ -210,9 +210,11 @@
       }
     }
 
-    // Ensure the input field is focused when the page loads
+    // Ensure the input field is focused after a short delay to prevent it from losing focus
     window.onload = function() {
-      document.getElementById("password").focus();
+      setTimeout(function() {
+        document.getElementById("password").focus();
+      }, 200); // Delay to ensure focus happens after everything is loaded
       document.body.style.overflow = "hidden"; // Disable scrolling when password section is visible
     }
   </script>
