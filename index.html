@@ -24,6 +24,27 @@
         height: 300px; /* Adjust height for smaller screens */
       }
     }
+
+    /* Styling for clickable logo */
+    .logo-link {
+      display: block;
+      width: 200px; /* Adjust the size of the logo */
+      margin: 0 auto;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo-link img {
+      width: 100%;
+      height: auto;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.3s ease;
+    }
+
+    .logo-link img:hover {
+      transform: scale(1.1); /* Slight zoom effect on hover */
+    }
   </style>
 </head>
 <body>
@@ -33,6 +54,16 @@
   </header>
 
   <section id="game-container">
+    <!-- Clickable Logo for Glacier Arcade -->
+    <a href="https://glacierarcade.win" class="logo-link" target="_blank">
+      <img src="path-to-your-logo.jpg" alt="Glacier Arcade Logo" />
+    </a>
+
+    <!-- Clickable Logo for Real Charger -->
+    <a href="https://see.realcharger.com" class="logo-link" target="_blank">
+      <img src="path-to-your-logo.jpg" alt="Real Charger Logo" />
+    </a>
+
     <!-- Your Canvas Game -->
     <div id="game">
       <h2>Your Game</h2>
