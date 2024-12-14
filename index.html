@@ -147,7 +147,15 @@
     <p>Click on the logos below to play some awesome games!</p>
   </header>
 
-
+  <!-- Password Protection Section -->
+  <div id="password-section">
+    <div>
+      <h2>Please enter the password:</h2>
+      <input type="password" id="password" placeholder="Enter password">
+      <button onclick="checkPassword()">Submit</button>
+      <p id="error-message">Incorrect password. Try again.</p>
+    </div>
+  </div>
 
   <!-- Top Menu -->
   <div class="top-menu">
@@ -232,7 +240,23 @@
   </footer>
 
   <script>
-   
+    // Password for access
+    const correctPassword = "eminemradiostationohio"; // Replace with your desired password
+    let loggedIn = false;
+
+    // Function to check the password
+    function checkPassword() {
+      const enteredPassword = document.getElementById("password").value;
+      const errorMessage = document.getElementById("error-message");
+
+      if (enteredPassword === correctPassword) {
+        loggedIn = true; // Mark as logged in
+        document.getElementById("password-section").style.display = "none";
+        document.getElementById("content").style.display = "block";
+      } else {
+        errorMessage.style.display = "block"; // Show error message if password is incorrect
+      }
+    }
 
     // Function to display the iframe based on the clicked logo
     function showGame(game) {
@@ -325,51 +349,4 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About:Blank Pop-Up</title>
-        <style>
-            button {
-                padding: 10px 20px;
-                background-color: #4CAF50;
-                color: white;
-                border: none;
-                cursor: pointer;
-                font-size: 16px;
-            }
-    
-            button:hover {
-                background-color: #45a049;
-            }
-    
-            h2 {
-                text-align: center;
-                margin-top: 20px;
-            }
-        </style>
-    </head>
-    <body>
-    
-        <h2>Cloak</h2>
-    
-        <!-- Button to open the pop-up window -->
-        <div style="text-align:center; margin-top:50px;">
-            <button onclick="openPopUp()">Open Pop-Up with Same Content</button>
-        </div>
-    
-        <script>
-            function openPopUp() {
-                // Open a new window with about:blank
-                var popupWindow = window.open('about:blank', '_blank', 'width=800,height=600');
-    
-                // Get the HTML content of the current page
-                var content = document.documentElement.innerHTML;
-    
-                // Write the content into the popup window
-                popupWindow.document.open();
-                popupWindow.document.write(content);
-                popupWindow.document.close();
-            }
-        </script>
-    
-    </body>
-    </html>
-    
+       
