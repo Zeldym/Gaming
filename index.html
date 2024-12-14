@@ -105,6 +105,26 @@
       color: white;
     }
 
+    /* Cloak button styling */
+    #cloakButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      z-index: 1001; /* Ensure it's above other content */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    #cloakButton:hover {
+      background-color: #0056b3;
+    }
+
   </style>
 </head>
 <body>
@@ -136,23 +156,23 @@
       </a>
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('nothing')">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaD6GBigeKSIel5AjVLBXwFsxEqHSDnLVs3g&s" alt="Nothing To Hide Demo Logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/Nothing_logo_2024.svg" alt="Nothing To Hide Demo Logo" />
       </a>
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('school')">
-        <img src="https://demo-opensource.rammerhead.org/logo.png" alt="SchoolMXTH Logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/School_MX_logo.svg" alt="SchoolMXTH Logo" />
       </a>
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('op1um')">
-        <img src="https://bulldogbugle.com/wp-content/uploads/2023/12/L-2767670-1653175663-7843.jpg" alt="Op1um Games Logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a1/Op1um_logo.svg" alt="Op1um Games Logo" />
       </a>
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('acorn')">
-        <img src="data:image/jpeg;base64,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" alt="Acorn13 Logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Acorn13_logo.svg" alt="Acorn13 Logo" />
       </a>
 
       <a href="javascript:void(0);" class="logo-link" onclick="showGame('mexismath')">
-        <img src="https://mexismath.web.app/buttonlogo.png" alt="Mexismath Logo" />
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f8/Mexismath_logo.svg" alt="Mexismath Logo" />
       </a>
     </div>
 
@@ -167,6 +187,9 @@
       <iframe id="mexismath" src="https://mexismath.firebaseapp.com/notebook.html" title="Mexismath Notebook"></iframe>
     </div>
   </section>
+
+  <!-- Cloak Button -->
+  <button id="cloakButton" onclick="cloak()">Cloak</button>
 
   <footer>
     <p>Made by Zeldym, Aristo4545, Scoredivy717983</p>
@@ -206,6 +229,12 @@
       if (selectedGame) {
         selectedGame.style.display = 'block';
       }
+    }
+
+    // Function to open a cloak popup
+    function cloak() {
+      const cloakWindow = window.open("about:blank", "cloakWindow", "width=800,height=600");
+      cloakWindow.document.write("<html><head><title>Cloked Window</title></head><body><h1>This is a cloaked window!</h1><iframe src='" + window.location.href + "' width='100%' height='100%' style='border:none;'></iframe></body></html>");
     }
   </script>
 </body>
