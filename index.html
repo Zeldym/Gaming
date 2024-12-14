@@ -4,15 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gaming Website</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     /* Basic Styling for Embedding */
     iframe {
       width: 100vw; /* Full width of the viewport */
       height: 100vh; /* Full height of the viewport */
       border: none;
-      margin: 0; /* Remove space between iframes */
+      margin-bottom: 0; /* Remove space between iframes */
       display: none; /* Initially hidden */
       max-width: 100%; /* Prevent overflow */
+    }
+
+    #gameCanvas {
+      background-color: #f0f0f0;
     }
 
     /* Styling for clickable logo */
@@ -35,6 +40,31 @@
       transform: scale(1.1); /* Slight zoom effect on hover */
     }
 
+    /* General Container for Intro Page */
+    .intro-container {
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+
+    /* Grid Layout for Logos */
+    .logo-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+      justify-items: center;
+      margin: 0 auto;
+    }
+
     /* Password Section */
     #password-section {
       position: absolute;
@@ -53,7 +83,6 @@
       padding: 10px;
       font-size: 16px;
       margin-right: 10px;
-      outline: none;
     }
 
     #password-section button {
@@ -70,16 +99,6 @@
     #content.hidden-logos .logo-link {
       display: none;
     }
-
-    /* Center the footer */
-    footer {
-      text-align: center;
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #333;
-      color: white;
-    }
-
   </style>
 </head>
 <body>
@@ -92,7 +111,7 @@
   <div id="password-section">
     <div>
       <h2>Please enter the password:</h2>
-      <input type="password" id="password" placeholder="Enter password" autofocus>
+      <input type="password" id="password" placeholder="Enter password">
       <button onclick="checkPassword()">Submit</button>
       <p id="error-message">Incorrect password. Try again.</p>
     </div>
@@ -133,13 +152,13 @@
 
     <!-- Embed section that will show when a logo is clicked -->
     <div id="gameContainer">
-      <iframe id="glacier" src="https://classroom.global.ssl.fastly.net/gxmes" title="Glacier Arcade"></iframe>
-      <iframe id="realcharger" src="https://see.realcharger.com" title="Real Charger"></iframe>
-      <iframe id="nothing" src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html" title="Nothing To Hide Demo"></iframe>
-      <iframe id="school" src="https://schoolmxth.vr.lt/" title="School MXTH"></iframe>
-      <iframe id="op1um" src="https://op1um.pages.dev/games" title="Op1um Games"></iframe>
-      <iframe id="acorn" src="https://acorn13.github.io/" title="Acorn13"></iframe>
-      <iframe id="mexismath" src="https://mexismath.firebaseapp.com/notebook.html" title="Mexismath Notebook"></iframe>
+      <iframe id="glacier" src="https://classroom.global.ssl.fastly.net/gxmes" title="Glacier Arcade" onload="this.style.display = 'block'"></iframe>
+      <iframe id="realcharger" src="https://see.realcharger.com" title="Real Charger" onload="this.style.display = 'block'"></iframe>
+      <iframe id="nothing" src="https://nothing-to-hide-demo.s3.amazonaws.com/index.html" title="Nothing To Hide Demo" onload="this.style.display = 'block'"></iframe>
+      <iframe id="school" src="https://schoolmxth.vr.lt/" title="School MXTH" onload="this.style.display = 'block'"></iframe>
+      <iframe id="op1um" src="https://op1um.pages.dev/games" title="Op1um Games" onload="this.style.display = 'block'"></iframe>
+      <iframe id="acorn" src="https://acorn13.github.io/" title="Acorn13" onload="this.style.display = 'block'"></iframe>
+      <iframe id="mexismath" src="https://mexismath.firebaseapp.com/notebook.html" title="Mexismath Notebook" onload="this.style.display = 'block'"></iframe>
     </div>
   </section>
 
@@ -180,14 +199,10 @@
       const selectedGame = document.getElementById(game);
       if (selectedGame) {
         selectedGame.style.display = 'block';
+        selectedGame.contentWindow.focus();  // Focus on the iframe to prevent it from freezing
       }
     }
-
-    // Focus on password input immediately after page loads
-    window.onload = function() {
-      document.getElementById("password").focus(); // Ensure focus stays
-    }
-
   </script>
 </body>
 </html>
+
