@@ -300,6 +300,10 @@
     function goBack() {
       document.getElementById("hallOfFame").style.display = 'none';
       document.getElementById("content").style.display = 'block';
+      const iframes = document.querySelectorAll('iframe');
+      iframes.forEach(iframe => {
+        iframe.style.display = 'none';
+      });
     }
 
     // Show Games Section
