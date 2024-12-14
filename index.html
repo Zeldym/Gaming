@@ -122,24 +122,6 @@
       color: #FFD700;
     }
 
-    /* Back Button Styling */
-    .back-btn {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      font-size: 20px;
-      padding: 10px;
-      background-color: rgba(0, 0, 0, 0.7); /* Background color */
-      color: white;
-      border: none;
-      cursor: pointer;
-      z-index: 10000;
-    }
-
-    .back-btn:hover {
-      background-color: rgba(0, 0, 0, 0.9); /* Hover effect */
-    }
-
     /* Hall of Fame Section */
     #hallOfFame {
       padding: 20px;
@@ -186,7 +168,6 @@
     <h2>Hall of Fame</h2>
     <p>Made by Zeldym, scoredivy717983, Aristo4545</p>
     <p>Thanks to Mally and Krishydafishy for letting me embed their websites.</p>
-    <button onclick="goBack()">Back to Games</button>
   </div>
 
   <!-- Clean Intro Page Section -->
@@ -252,9 +233,6 @@
       <iframe id="bio" src="https://bio.link/googleddd" title="Google DDD"></iframe>
       <iframe id="dogsandcats" src="https://sites.google.com/view/dogsandcats-are-fire-gaming123/gms" title="Dogs and Cats Gaming"></iframe>
     </div>
-
-    <!-- Back Button -->
-    <button class="back-btn" onclick="goBack()">Back to Games</button>
   </section>
 
   <footer>
@@ -287,8 +265,6 @@
         iframe.style.display = 'none';
       });
 
-      document.getElementById("content").classList.add('hidden-logos');
-
       const selectedGame = document.getElementById(game);
       if (selectedGame) {
         selectedGame.style.display = 'block';
@@ -299,16 +275,6 @@
     function showHallOfFame() {
       document.getElementById("hallOfFame").style.display = 'block';
       document.getElementById("content").style.display = 'none';
-    }
-
-    // Back button functionality
-    function goBack() {
-      document.getElementById("hallOfFame").style.display = 'none';
-      document.getElementById("content").style.display = 'block';
-      const iframes = document.querySelectorAll('iframe');
-      iframes.forEach(iframe => {
-        iframe.style.display = 'none';
-      });
     }
 
     // Show Games Section
